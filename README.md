@@ -2,7 +2,7 @@
 
 ## Installing 
 ```
-https://raw.githubusercontent.com/RUR999/999-x11/refs/heads/main/x11.sh -o x11.sh
+curl https://raw.githubusercontent.com/RUR999/999-x11/refs/heads/main/x11.sh -o x11.sh
 ```
 ```run
 bash x11.sh
