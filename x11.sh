@@ -9,7 +9,7 @@ boxr="\033[1;34m[\033[1;31m!\033[1;34m]"
 . <(curl -sLo- "https://raw.githubusercontent.com/RUR999/spinner/refs/heads/main/spin.sh")
 
 banner() {
-    echo -en "\n${b}╭━━━╮╭━━━╮╭━━━╮╱╱╱╱╱╭╮╱╱╭╮\n┃╭━╮┃┃╭━╮┃┃╭━╮┃╱╱╱╱╭╯┃╱╭╯┃\n┃╰━╯┃┃╰━╯┃┃╰━╯┃╭╮╭╮╰╮┃╱╰╮┃\n╰━━╮┃╰━━╮┃╰━━╮┃╰╋╋╯╱┃┃╱╱┃┃\n╭━━╯┃╭━━╯┃╭━━╯┃╭╋╋╮╭╯╰╮╭╯╰╮\n╰━━━╯╰━━━╯╰━━━╯╰╯╰╯╰━━╯╰━━╯\n                    by RUR 999\n\n${n}"
+    echo -en "\n${b}╭━━━╮╭━━━╮╭━━━╮╱╱╱╱╱╭╮╱╱╭╮\n┃╭━╮┃┃╭━╮┃┃╭━╮┃╱╱╱╱╭╯┃╱╭╯┃\n┃╰━╯┃┃╰━╯┃┃╰━╯┃╭╮╭╮╰╮┃╱╰╮┃\n╰━━╮┃╰━━╮┃╰━━╮┃╰╋╋╯╱┃┃╱╱┃┃\n╭━━╯┃╭━━╯┃╭━━╯┃╭╋╋╮╭╯╰╮╭╯╰╮\n╰━━━╯╰━━━╯╰━━━╯╰╯╰╯╰━━╯╰━━╯\n             by RUR 999\n\n${n}"
 }
 
 
@@ -23,53 +23,18 @@ for pkg in "${pkgs[@]}";do
     (pkg install -y ${pkg}) &> /dev/null & spin
 done
 
-if [[ $(command -v chromium) ]]; then
-    echo -e "${boxg}${g} Chromium Browser Already Installed${n}"
-    sleep 2
-    else
-    echo -e "${boxg}${g} Installing Chromium Browser ${n}"
-    (pkg install -y chromium) &> /dev/null & spin
-fi
-
-if [[ $(command -v firefox) ]]; then
-    echo -e "${boxg}${g} Firefox Browser Already Installed${n}"
-    sleep 2
-    else
-    echo -e "${boxg}${g} Installing Firefox Browser ${n}"
-    (pkg install -y firefox) &> /dev/null & spin
-fi
-
-if [[ $(command -v code-oss) ]]; then
-    echo -e "${boxg}${g} VS Code Editor Already Installed${n}"
-    sleep 2
-    else
-    echo -e "${boxg}${g} Installing VS Code Editor${n}"
-    (pkg install -y code-oss) &> /dev/null & spin
-fi
-
-if [[ $(command -v parole) ]]; then
-    echo -e "${boxg}${g} Parole Already Installed${n}"
-    sleep 2
-    else
-    echo -e "${boxg}${g} Installing Parole Media Player${n}"
-    (pkg install -y parole) &> /dev/null & spin
-fi
-
-if [[ $(command -v ristretto) ]]; then
-    echo -e "${boxg}${g} Ristretto Image Viewer Already Installed${n}"
-    sleep 2
-    else
-    echo -e "${boxg}${g} Installing Ristretto Image Viewer${n}"
-    (pkg install -y ristretto) &> /dev/null & spin
-fi
-
-if [[ $(command -v inkscape) ]]; then
-    echo -e "${boxg}${g} inkscape Image Editor Already Installed${n}"
-    sleep 2
-    else
-    echo -e "${boxg}${g} Installing inkscape Image Editor${n}"
-    (pkg install -y inkscape) &> /dev/null & spin
-fi
+echo -e "${boxg}${g} Installing Chromium Browser ${n}"
+(pkg install -y chromium) &> /dev/null & spin
+echo -e "${boxg}${g} Installing Firefox Browser ${n}"
+(pkg install -y firefox) &> /dev/null & spin
+echo -e "${boxg}${g} Installing VS Code Editor${n}"
+(pkg install -y code-oss) &> /dev/null & spin
+echo -e "${boxg}${g} Installing Parole Media Player${n}"
+(pkg install -y parole) &> /dev/null & spin
+echo -e "${boxg}${g} Installing Ristretto Image Viewer${n}"
+(pkg install -y ristretto) &> /dev/null & spin
+echo -e "${boxg}${g} Installing inkscape Image Editor${n}"
+(pkg install -y inkscape) &> /dev/null & spin
 
 rurfish(){
     echo -en "${boxq} ${g}Do You Want To Install Fish Functions? (y/n)${n} "
@@ -90,6 +55,7 @@ rurfish(){
     ;;
     esac
 }
+rurfish
 
 rm -rf $PREFIX/bin/x11
 rm -rf $PREFIX/bin/stopx11
