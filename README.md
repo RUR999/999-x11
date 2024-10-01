@@ -2,13 +2,10 @@
 
 ## Installing 
 ```
-git clone https://github.com/RUR999/999.fish
-```
-```
-cd 999.fish
+https://raw.githubusercontent.com/RUR999/999-x11/refs/heads/main/x11.sh
 ```
 ```run
-bash 999.sh
+bash x11.sh
 ```
 ## Screenshot 
 <img src="https://raw.githubusercontent.com/RUR999/999.fish/refs/heads/main/files/ss.jpg" align="center" width="320px" height="320px"/>
