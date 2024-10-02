@@ -9,9 +9,27 @@ boxr="\033[1;34m[\033[1;31m!\033[1;34m]"
 . <(curl -sLo- "https://raw.githubusercontent.com/RUR999/spinner/refs/heads/main/spin.sh")
 
 banner() {
-    echo -en "\n${b}╭━━━╮╭━━━╮╭━━━╮╱╱╱╱╱╭╮╱╱╭╮\n┃╭━╮┃┃╭━╮┃┃╭━╮┃╱╱╱╱╭╯┃╱╭╯┃\n┃╰━╯┃┃╰━╯┃┃╰━╯┃╭╮╭╮╰╮┃╱╰╮┃\n╰━━╮┃╰━━╮┃╰━━╮┃╰╋╋╯╱┃┃╱╱┃┃\n╭━━╯┃╭━━╯┃╭━━╯┃╭╋╋╮╭╯╰╮╭╯╰╮\n╰━━━╯╰━━━╯╰━━━╯╰╯╰╯╰━━╯╰━━╯\n             by RUR 999\n\n${n}"
+    echo -en "\n${b}╔═══╗╔═══╗╔═══╗╔═╦╦═╦╗\n║╔═╗║║╔═╗║║╔═╗║║═╬╣═╣╚╗\n║╚═╝║║╚═╝║║╚═╝║║╔╣╠═║║║\n╚══╗║╚══╗║╚══╗║╚╝╚╩═╩╩╝\n╔══╝║╔══╝║╔══╝║ ${g}By RUR 999\n${b}╚═══╝╚═══╝╚═══╝ \n\n${n}"
 }
-
+rurfish(){
+    echo -en "${boxq} ${g}Do You Want To Install Fish Functions? (y/n)${n} "
+    read yn
+    case $yn in
+    Y|y)
+    echo -e "${boxg} ${g}Installing Fish Functions${n}"
+    (curl https://raw.githubusercontent.com/RUR999/999.fish/refs/heads/main/999.sh -o 999.sh) &> /dev/null & spin
+    bash 999.sh
+    rm -rf 999.sh
+    ;;
+    N|n) 
+    echo ""
+    chsh -s fish
+    ;;
+    *) echo -e "${boxr} ${r}Wrong Input"
+    rurfish
+    ;;
+    esac
+}
 
 termux-setup-storage
 clear;banner
@@ -35,26 +53,6 @@ echo -e "${boxg}${g} Installing Ristretto Image Viewer${n}"
 (pkg install -y ristretto) &> /dev/null & spin
 echo -e "${boxg}${g} Installing inkscape Image Editor${n}"
 (pkg install -y inkscape) &> /dev/null & spin
-
-rurfish(){
-    echo -en "${boxq} ${g}Do You Want To Install Fish Functions? (y/n)${n} "
-    read yn
-    case $yn in
-    Y|y)
-    echo -e "${boxg} ${g}Installing Fish Functions${n}"
-    (curl https://raw.githubusercontent.com/RUR999/999.fish/refs/heads/main/999.sh -o 999.sh) &> /dev/null & spin
-    bash 999.sh
-    rm -rf 999.sh
-    ;;
-    N|n) 
-    echo ""
-    chsh -s fish
-    ;;
-    *) echo -e "${boxr} ${r}Wrong Input"
-    rurfish
-    ;;
-    esac
-}
 rurfish
 
 rm -rf $PREFIX/bin/x11
@@ -65,6 +63,11 @@ cat >> $PREFIX/bin/x11 <<- _EOF_
 
 # Kill open X11 processes
 pkill -f com.termux.x11
+
+# pulseaudio sound
+pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
+
+export PULSE_SERVER=127.0.0.1 && pulseaudio --start --disable-shm=1 --exit-idle-time=-1
 
 # Prepare termux-x11 session
 export XDG_RUNTIME_DIR=${TMPDIR}
