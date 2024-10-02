@@ -8,4 +8,4 @@ curl https://raw.githubusercontent.com/RUR999/999-x11/refs/heads/main/x11.sh -o 
 bash x11.sh
 ```
 ## Screenshot 
-<img src="https://github.com/RUR999/999-x11/blob/main/sst.jpg" align="center" width="320px" height="320px"/>
+<img src="https://github.com/RUR999/999-x11/blob/main/sst.jpg" align="center" />
